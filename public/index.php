@@ -9,39 +9,30 @@
 main::start("example.csv");
 
 class main {
+    static public function start($filename) {
 
-    static public function start() {
-        $records= csv::getRecords();
-        $table =html::generateTable($records);
-        system::printPage($table);
+        $records = csv::getRecords($filename);
 
-
+        print_r($records);
     }
 }
+
 
 class csv {
 
-    static public function getRecords() {
+    static public function getRecords($filename) {
 
-    }
-}
+        $file = fopen($filename, "r");
 
-class html {
-    static public function generateTable($records) {
+        while(! feof($file))
+        {
+            $record = fgetcsv($file);
 
-        $table = 'test';
+            $records[] = $record;
+        }
 
-        return $table;
-    }
-}
+        fclose($file);
 
-
-
-
-class system {
-    static public function printPage($page) {
-
-        echo $page;
-
+        print_r($records);
     }
 }
