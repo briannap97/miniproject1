@@ -21,7 +21,18 @@ class html {
 
     public static function generateTable($records) {
 
+        $count = 0;
+
         foreach ($records as $record) {
+            if ($count == 0) {
+
+                $array = $record->returnArray();
+                $fields = array_keys($array);
+                print_r($fields);
+                
+            }else{
+
+            }
             $array = $record->returnArray();
             print_r($array);
         }
