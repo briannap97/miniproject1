@@ -13,35 +13,115 @@ class main {
 
         $records = csv::getRecords($filename);
         $table = html::generateTable($records);
+        echo $table;
 
     }
 }
 
-class html {
+/*class html {
 
     public static function generateTable($records) {
 
         $count = 0;
+        $table="<html><head>Heading</head></html> ";
+
 
         foreach ($records as $record) {
+            //$table .="<html><head>Heading</head></body>";
             if ($count == 0) {
 
                 $array = $record->returnArray();
                 $fields = array_keys($array);
-                $values = array_values($array);
-                print_r($fields);
-                print_r($values);
+                //$values = array_values($array);
+                $table .="<tr>";
 
-            }else{
+                foreach ($fields as $field) {
+                    $table .="<th>" .$field ."</th>";
+                    $count = 1;
+                }
+                $table .="</tr>";
                 $array = $record->returnArray();
                 $values = array_values($array);
-                print_r($values);
+                $table .="<tr>"
+                foreach ($values as $value) {
+                    $table .="<td>" .$value ."</td>";
+                }
+                $table .="</tr>"
+
+
 
             }
-            $count++;
+            //$table="</html>";
+            return $table;
+
+
 
         }
+
+
+
+
+
+
     }
+}
+*/
+class html {
+
+
+    public static function generateTable($records) {
+
+
+        $count = 0;
+        //$table = " ";
+        $table .= "<html><head> Table </head><body><table class='table table-striped'>";
+
+
+        foreach ($records as $record) {
+
+            //$table .= "<html><head> Table </head><body><table class='table table-striped'>";
+
+            if($count == 0) {
+
+                $array = $record->returnArray();
+                $fields = array_keys($array);
+                $table .= "<tr>" ;
+
+                foreach($fields as $field) {
+
+                    $table .= "<th>" . $field . "</th>";
+                    $count = 0 ;
+                }
+                $table .="</tr>";
+                $array = $record->returnArray();
+                $values = array_values($array);
+                $table .="<tr>";
+
+                foreach($values as $value) {
+
+                    $table .= "<td>" . $value . "</td>" ;
+
+                }
+
+                $table .="</tr>";
+
+
+
+
+            }
+
+            //$table .="</table><body></html>";
+            //return $table;
+
+
+        }
+        $table .="</table><body></html>";
+        return $table;
+
+
+    }
+
+
 }
 
 class csv {
