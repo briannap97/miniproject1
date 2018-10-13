@@ -18,54 +18,6 @@ class main {
     }
 }
 
-/*class html {
-
-    public static function generateTable($records) {
-
-        $count = 0;
-        $table="<html><head>Heading</head></html> ";
-
-
-        foreach ($records as $record) {
-            //$table .="<html><head>Heading</head></body>";
-            if ($count == 0) {
-
-                $array = $record->returnArray();
-                $fields = array_keys($array);
-                //$values = array_values($array);
-                $table .="<tr>";
-
-                foreach ($fields as $field) {
-                    $table .="<th>" .$field ."</th>";
-                    $count = 1;
-                }
-                $table .="</tr>";
-                $array = $record->returnArray();
-                $values = array_values($array);
-                $table .="<tr>"
-                foreach ($values as $value) {
-                    $table .="<td>" .$value ."</td>";
-                }
-                $table .="</tr>"
-
-
-
-            }
-            //$table="</html>";
-            return $table;
-
-
-
-        }
-
-
-
-
-
-
-    }
-}
-*/
 class html {
 
 
@@ -73,36 +25,40 @@ class html {
 
 
         $count = 0;
-        //$table = " ";
-        $table .= "<html><head> Table </head><body><table class='table table-striped'>";
-
+        $table = " ";
 
         foreach ($records as $record) {
-
-            //$table .= "<html><head> Table </head><body><table class='table table-striped'>";
+            $table .= "<html><head> <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">
+	<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
+	<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script> </head><body><table class='table table-striped'>";
 
             if($count == 0) {
 
                 $array = $record->returnArray();
                 $fields = array_keys($array);
-                $table .= "<tr>" ;
 
+                $table .= "<thead>" ;
                 foreach($fields as $field) {
 
+
+
                     $table .= "<th>" . $field . "</th>";
-                    $count = 0 ;
+                    $count == 1;
+
+
                 }
-                $table .="</tr>";
+
+                $table .="</thead>";
+
                 $array = $record->returnArray();
                 $values = array_values($array);
-                $table .="<tr>";
 
+                $table .="<tr>";
                 foreach($values as $value) {
 
                     $table .= "<td>" . $value . "</td>" ;
 
                 }
-
                 $table .="</tr>";
 
 
@@ -110,12 +66,10 @@ class html {
 
             }
 
-            //$table .="</table><body></html>";
-            //return $table;
 
 
         }
-        $table .="</table><body></html>";
+        $table .="</body></html>";
         return $table;
 
 
