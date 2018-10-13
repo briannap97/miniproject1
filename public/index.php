@@ -43,22 +43,24 @@ class html {
 
 
                     $table .= "<th>" . $field . "</th>";
-                    $count == 1;
+
 
 
                 }
 
                 $table .="</thead>";
 
-                $array = $record->returnArray();
-                $values = array_values($array);
+                    $array = $record->returnArray();
+                    $values = array_values($array);
 
-                $table .="<tr>";
-                foreach($values as $value) {
+                    $table .= "<tr>";
+                    foreach ($values as $value) {
 
-                    $table .= "<td>" . $value . "</td>" ;
+                        $table .= "<td>" . $value . "</td>";
 
-                }
+                    }
+
+
                 $table .="</tr>";
 
 
